@@ -1,26 +1,27 @@
-<div id="carouselExampleDark" class="carousel carousel-fade slide" style="max-height-200px" data-bs-ride="carousel">
-  <div class="carousel-indicators">
+<div id="carouselExampleDark" class="carousel carousel-fade slide" data-bs-ride="carousel">
+  <div class="bg-primary"></div>
+  <div class="carousel-indicators bold">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner ratio ratio-21x9">
+  <div class="carousel-inner ratio ratio-21x9" style="max-height: 700px;">
     <div class="carousel-item active" data-bs-interval="10000">
-      <img src="../assets/carousel1.jpg" class="d-block w-100 object-fit-cover" alt="">
+      <img src="../assets/carousel1.jpg" class="d-block w-100 object-fit-cover filter" alt="">
       <div class="carousel-caption d-none d-md-block">
-        <h5 class="">First slide label</h5>
+        <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
-      <img src="../assets/carousel2.png" class="d-block w-100 object-fit-cover" alt="">
-      <div class="carousel-caption d-none d-md-block text-dark">
+      <img src="../assets/carousel2.png" class="d-block w-100 object-fit-cover filter" alt="">
+      <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="../assets/carousel3.png" class="d-block w-100 object-fit-cover" alt="">
+      <img src="../assets/carousel3.png" class="d-block w-100 object-fit-cover filter" alt="">
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>

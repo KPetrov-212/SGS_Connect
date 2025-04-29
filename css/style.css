@@ -1,0 +1,13 @@
+.instagram:hover { color: rgb(255, 1, 217) !important; }
+
+.facebook:hover { color: rgb(0, 149, 255) !important; }
+
+.youtube:hover { color: rgb(255, 0, 0) !important; }
+
+.filter{
+    filter: brightness(80%);
+}
+
+.bg-footer{
+    background: rgba(48, 43, 34, 1);
+}
