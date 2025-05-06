@@ -9,20 +9,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   </head>
   <body>
-    <nav class="sticky-top">
+    <nav class="sticky-top fixed-top">
       <?php include '../components/navbar.php'; ?>
     </nav>
     <?php include '../components/carousel.php'; ?>
     <main>
       <div class="d-flex justify-content-center mt-5 pt-5" id="firstgroup">
-        <h1 class="">Електризирайте дома си с SGS</h1>
+        <h1 class="">Електризирайте дома си с <h1 class="text-warning">&nbsp;SGS<h1></h1>
       </div>
       <div class="container py-5" id="firstgroup">
         <div class="row align-items-center gy-5">
           <!-- Video Section -->
           <div class="col-lg-6 col-12 order-lg-2 d-flex justify-content-center align-items-center">
             <div class="ratio ratio-16x9 shadow-lg rounded">
-              <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/j_kYPSVMtqU" title="YouTube video" allowfullscreen></iframe>
             </div>
           </div>
           <!-- Information Section -->

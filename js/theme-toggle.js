@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (theme === 'dark') {
         iconLight.classList.add('d-none');
         iconDark.classList.remove('d-none');
-      } else {
+      } else { 
         iconLight.classList.remove('d-none');
         iconDark.classList.add('d-none');
       }
