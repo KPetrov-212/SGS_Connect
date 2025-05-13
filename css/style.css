@@ -5,9 +5,28 @@
 .youtube:hover { color: rgb(255, 0, 0) !important; }
 
 .filter{
-    filter: brightness(80%);
+    filter: brightness(100%);
 }
 
 .bg-footer{
     background: rgba(48, 43, 34, 1);
+}
+
+#iconLight, #iconDark {
+     display: none;
+   }
+
+   [data-bs-theme="light"] #iconLight {
+     display: inline;
+   }
+
+   [data-bs-theme="dark"] #iconDark {
+     display: inline;
+   }
+
+.form-container {
+  display: none;
+}
+.form-container.active {
+  display: block;
 }
