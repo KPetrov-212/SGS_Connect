@@ -1,9 +1,14 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <section class="navbar navbar-expand-lg p-lg-3 p-2 bg-body-tertiary">
   <div class="container-fluid d-flex justify-content-between">
     <a href="./index.php" class="navbar-brand">
       <img src="../assets/SGS_Connect.svg" alt="Bootstrap" width="180" height="40" class="mr-5">
     </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -12,7 +17,7 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#"><i class="bi bi-calculator-fill">ЕНЕРГИЕН КАЛКУЛАТОР</i></a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
           <a class="nav-link" href="./qko.php"><i class="bi bi-lightning-charge-fill">Защо слънчева енергия?</i></a>
         </li>
       </ul>
@@ -28,7 +33,11 @@
           </svg>
         </button>
 
-        <a href="./login.php" class="btn" id="accountBtn">
+        <?php if (isset($_SESSION['user'])): ?>
+          <a href="./account.php" class="btn" id="accountBtn">
+        <?php else: ?>
+          <a href="./login.php" class="btn" id="accountBtn">
+        <?php endif; ?>
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
             <path d="M11   6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
