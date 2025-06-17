@@ -11,17 +11,17 @@
         <!-- Social Links -->
         <ul class="list-unstyled d-flex flex-column flex-md-row justify-content-center align-items-center fw-bold my-5">
             <li class="me-md-3 mb-2">
-            <a href="https://www.instagram.com/studentcouncil_ppmg" target="_blank" class="text-light link-underline  link-underline-opacity-0 instagram fs-4">
+            <a href="https://www.instagram.com" target="_blank" class="text-light link-underline  link-underline-opacity-0 instagram fs-4">
                 <i class="bi bi-instagram me-2"></i>@SGS_Connect
             </a>
             </li>
             <li class="me-md-3 mb-2">
-            <a href="https://www.facebook.com/ppmg.botevgrad" target="_blank" class="text-light link-underline  link-underline-opacity-0 facebook fs-4">
+            <a href="https://www.facebook.com" target="_blank" class="text-light link-underline  link-underline-opacity-0 facebook fs-4">
                 <i class="bi bi-facebook me-2"></i>SGS Connect
             </a>
             </li>
             <li class="mb-2">
-            <a href="https://www.youtube.com/@user-eo5lw6cz2k" target="_blank" class="text-light link-underline  link-underline-opacity-0 youtube fs-4">
+            <a href="https://www.youtube.com" target="_blank" class="text-light link-underline  link-underline-opacity-0 youtube fs-4">
                 <i class="bi bi-youtube me-2"></i>SGS_Connect
             </a>
             </li>

@@ -2,16 +2,17 @@
 // Start session
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "sgs";
+$config = require __DIR__ . '/../config.php';
 
 try {
-  $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-  $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $connection = new PDO(
+        "mysql:host={$config['db_host']};dbname={$config['db_name']}",
+        $config['db_user'],
+        $config['db_pass']
+    );
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
+    echo "Connection failed: " . $e->getMessage();
 }
 
 // Handle form submission
@@ -65,6 +66,7 @@ if (isset($_POST['submit'])) {
   }
 }
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -95,7 +97,6 @@ if (isset($_POST['submit'])) {
           <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <div class="card shadow-lg">
               <div class="card-body">
-                <h3 class="text-center mb-4">Sign In / Register</h3>
                 <?php if (isset($error_message)): ?>
                   <div class="alert alert-danger text-center">
                     <?php echo $error_message; ?>
@@ -107,6 +108,7 @@ if (isset($_POST['submit'])) {
                 <?php endif; ?>
                 <!-- Sign In Form -->
                 <form method="POST" action="" id="signInForm" class="form-container active">
+                  <h3 class="text-center mb-4">Sign In</h3>
                   <input type="hidden" name="action" value="login">
                   <div class="form-group mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -125,6 +127,7 @@ if (isset($_POST['submit'])) {
                 </form>
                 <!-- Sign Up Form -->
                 <form method="POST" action="" id="signUpForm" class="form-container">
+                  <h3 class="text-center mb-4">Register</h3>
                   <input type="hidden" name="action" value="register">
                   <div class="form-group mb-3">
                     <label for="username" class="form-label">Username</label>

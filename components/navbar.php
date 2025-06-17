@@ -18,7 +18,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <a class="nav-link" aria-current="page" href="#"><i class="bi bi-calculator-fill">ЕНЕРГИЕН КАЛКУЛАТОР</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./qko.php"><i class="bi bi-lightning-charge-fill">Защо слънчева енергия?</i></a>
+          <a class="nav-link" href="./whysolar.php"><i class="bi bi-lightning-charge-fill">Защо слънчева енергия?</i></a>
         </li>
       </ul>
 

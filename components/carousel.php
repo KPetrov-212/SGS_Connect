@@ -1,11 +1,11 @@
 <div id="carouselExampleDark" class="carousel carousel-fade slide" data-bs-ride="carousel">
   <div class="bg-primary"></div>
-  <div class="carousel-indicators bold">
+  <div class="carousel-indicators bold visually-hidden">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner ratio ratio-21x9" style="max-height: 700px;">
+  <div class="carousel-inner ratio ratio-21x9" style="max-height: 400px;">
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="../assets/carousel1.jpg" class="d-block w-100 object-fit-cover filter" alt="">
       <div class="carousel-caption d-none d-md-block">
@@ -28,11 +28,11 @@
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+  <button class="carousel-control-prev visually-hidden" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+  <button class="carousel-control-next visually-hidden" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>

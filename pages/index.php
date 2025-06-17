@@ -30,7 +30,7 @@ session_start();
       <div class="d-flex justify-content-center mt-5 pt-5" id="firstgroup">
         <h1 class="">Електризирайте дома си с <h1 class="text-warning">&nbsp;SGS<h1></h1>
       </div>
-      <div class="container py-5" id="firstgroup">
+      <div class="container border-top border-2 border-warning py-5" id="firstgroup">
         <div class="row align-items-center gy-5">
           <!-- Video Section -->
           <div class="col-lg-6 col-12 order-lg-2 d-flex justify-content-center align-items-center">

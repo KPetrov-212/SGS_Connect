@@ -30,3 +30,9 @@
 .form-container.active {
   display: block;
 }
+
+.section-bg {
+  background: linear-gradient(to right,
+  rgba(8, 8, 8, 0.175) 0%,  
+  rgba(20, 20, 20, 0.298) 100% );
+}
