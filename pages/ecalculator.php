@@ -26,7 +26,18 @@ session_start();
       <?php include '../components/navbar.php'; ?>
     </nav>
     <main>
-      <!-- Your marketplace main content goes here -->
+      <?php
+      require_once '../config.php';
+      $result = $conn->query("SELECT * FROM panels");
+      $panels = $result->fetch_all(MYSQLI_ASSOC);
+      ?>
+
+      <div class="container my-5">
+        <h2 class="mb-4">Available Solar Panels</h2>
+        <?php foreach ($panels as $panel): ?>
+          <?php include '../components/panel.php'; ?>
+        <?php endforeach; ?>
+      </div>
     </main>
     <footer>
       <?php include '../components/footer.php'; ?>
