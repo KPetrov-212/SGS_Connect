@@ -2,70 +2,81 @@
 // Start session
 session_start();
 
-$config = require __DIR__ . '/../config.php';
-
-try {
-    $connection = new PDO(
-        "mysql:host={$config['db_host']};dbname={$config['db_name']}",
-        $config['db_user'],
-        $config['db_pass']
-    );
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+// Load database config
+require __DIR__ . '/../config.php'; // This must define $conn
 
 // Handle form submission
 if (isset($_POST['submit'])) {
-  $action = $_POST['action']; // Determine if it's login or register
+    $action = $_POST['action']; // login or register
 
-  if ($action === 'login') {
-    // Login logic
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    if ($action === 'login') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-    // Query the database for the user
-    $stmt = $connection->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch();
+        // Prepare statement
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        if (!$stmt) {
+            die("Prepare failed: " . $conn->error);
+        }
 
-    if ($user && password_verify($password, $user['password'])) {
-      // Set user data in session
-      $_SESSION['user'] = $user;
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
 
-      // Redirect to index page
-      header("location: index.php");
-      exit;
-    } else {
-      $error_message = "Invalid username or password.";
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user'] = $user;
+            header("location: index.php");
+            exit;
+        } else {
+            $error_message = "Invalid username or password.";
+        }
+
+        $stmt->close();
+
+    } elseif ($action === 'register') {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+
+        if ($password !== $confirm_password) {
+            $error_message = "Passwords do not match.";
+        } else {
+            // Check if user exists
+            $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+            if (!$stmt) {
+                die("Prepare failed: " . $conn->error);
+            }
+
+            $stmt->bind_param("ss", $username, $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->fetch_assoc()) {
+                $error_message = "Username or email already exists.";
+            } else {
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $stmt->close(); // close previous before preparing new
+                $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+                if (!$stmt) {
+                    die("Prepare failed: " . $conn->error);
+                }
+
+                $stmt->bind_param("sss", $username, $email, $hashed_password);
+                $stmt->execute();
+
+                $success_message = "Registration successful. You can now log in.";
+            }
+
+            $stmt->close();
+        }
     }
-  } elseif ($action === 'register') {
-    // Registration logic
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-
-    if ($password !== $confirm_password) {
-      $error_message = "Passwords do not match.";
-    } else {
-      // Check if username or email already exists
-      $stmt = $connection->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-      $stmt->execute([$username, $email]);
-      if ($stmt->fetch()) {
-        $error_message = "Username or email already exists.";
-      } else {
-        // Hash the password and insert the user into the database
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $connection->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $stmt->execute([$username, $email, $hashed_password]);
-
-        $success_message = "Registration successful. You can now log in.";
-      }
-    }
-  }
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
