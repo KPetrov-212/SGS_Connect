@@ -67,8 +67,8 @@ try {
     ";
 
     $mail->send();
-    echo 'Your order has been sent to your email!';
+    echo "<script>alert('Your order has been sent to your email!'); window.location.href='pages/ecalculator.php';</script>";
 } catch (Exception $e) {
-    echo "Error sending email: {$mail->ErrorInfo}";
+    echo "<script>alert('Error sending email: {$mail->ErrorInfo}'); window.location.href='pages/ecalculator.php';</script>";
 }
 ?>
