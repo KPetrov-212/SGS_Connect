@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="./ecalculator.php"><i class="bi bi-calculator-fill">ЕНЕРГИЕН КАЛКУЛАТОР</i></a>
+          <a class="nav-link" aria-current="page" href="./ecalculator.php"><i class="bi bi-leaf-fill">СОЛАРНИ ПАНЕЛИ</i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./whysolar.php"><i class="bi bi-lightning-charge-fill">Защо слънчева енергия?</i></a>

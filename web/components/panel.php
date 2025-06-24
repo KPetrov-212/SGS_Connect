@@ -16,4 +16,16 @@ if (!isset($panel)) return;
     <li><strong>Warranty:</strong> <?= $panel['warranty_years'] ?> years</li>
     <li><strong>Price:</strong> €<?= number_format($panel['price_eur'], 2) ?></li>
   </ul>
+
+  <form action="../send_mail.php" method="get" >
+  <input type="hidden" name="panel_id" value="<?= $panel['id'] ?>">
+  <select name="quantity" class="form-select w-auto me-2">
+    <?php for ($i = 1; $i <= 10; $i++): ?>
+      <option value="<?= $i ?>"><?= $i ?></option>
+    <?php endfor; ?>
+    </select>
+  <button type="submit" name="submit" value="1" class="btn btn-primary">Instant Order</button>
+</form>
+
 </div>
+

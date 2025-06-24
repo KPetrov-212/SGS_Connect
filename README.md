@@ -16,3 +16,7 @@ docker login
 docker build -t ТВОЕТО_ПОТРЕБИТЕЛСКО_ИМЕ/sgs_web ./web
 docker-compose up --build
 http://localhost:8080/pages/login.php
+
+
+
+hjdm yqrf exbm ikay 
