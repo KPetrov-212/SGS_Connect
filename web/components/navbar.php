@@ -23,6 +23,15 @@ if (session_status() === PHP_SESSION_NONE) {
         <li class="nav-item">
           <a class="nav-link" href="./whysolar.php"><i class="bi bi-lightning-charge-fill">Защо слънчева енергия?</i></a>
         </li>
+<?php
+  if ( isset( $_SESSION['user'] ) && $_SESSION['user']['email'] == "office.sgs.connect@gmail.com" ) {
+  ?>
+         <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="./admin_panels.php"><i class="bi bi-leaf-fill">admin</i></a>
+        </li>
+<?php
+  }
+  ?>
       </ul>
 
       <div class="d-flex justify-content-between">
