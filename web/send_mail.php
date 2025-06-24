@@ -6,23 +6,21 @@ require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// Check if user is logged in
+// Проверка за логнат потребител
 if (!isset($_SESSION['user'])) {
     header("Location: pages/login.php");
     exit;
 }
 
-// Get user email
 $user_email = $_SESSION['user']['email'] ?? null;
 
-// Get panel_id and quantity from GET
+// Взимане на данните от заявката
 $panel_id = isset($_GET['panel_id']) ? intval($_GET['panel_id']) : 0;
 $quantity = isset($_GET['quantity']) ? intval($_GET['quantity']) : 1;
 
-// Fetch panel info from DB
+// Взимане на информация за панела от базата
 $stmt = $conn->prepare("SELECT * FROM panels WHERE id = ?");
 $stmt->bind_param("i", $panel_id);
 $stmt->execute();
@@ -37,7 +35,7 @@ if (!$panel) {
 $mail = new PHPMailer(true);
 
 try {
-    // SMTP settings
+    // Настройки за SMTP
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
@@ -46,14 +44,19 @@ try {
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
-    // From and to
-    $mail->setFrom('krisi.petroff@gmail.com', 'SGS Connect');
+    $mail->setFrom('office.sgs.connect@gmail.com', 'SGS Connect');
+
+    // Изпращаме на клиента
     $mail->addAddress($user_email);
 
-    // Email content
+    // Изпращаме копие и на SGS Connect
+    $mail->addAddress('office.sgs.connect@gmail.com');
+
     $mail->isHTML(true);
     $mail->Subject = 'Your Solar Panel Order from SGS Connect';
-    $mail->Body    = "
+
+    // Общо съдържание на имейла
+    $mailContent = "
         <h2>Order Confirmation</h2>
         <p>Thank you for your order! Here are your order details:</p>
         <ul>
@@ -65,6 +68,14 @@ try {
         </ul>
         <p>We will contact you soon for further details.</p>
     ";
+
+    // Добавяме и информация за SGS Connect кой е клиентът
+    $mailContent .= "
+        <hr>
+        <p><strong>Customer email:</strong> $user_email</p>
+    ";
+
+    $mail->Body = $mailContent;
 
     $mail->send();
     echo "<script>alert('Your order has been sent to your email!'); window.location.href='pages/ecalculator.php';</script>";
